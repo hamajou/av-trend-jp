@@ -81,6 +81,7 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
 .back-btn{display:inline-block;border:1px solid #6a3a4d;border-radius:10px;padding:10px 14px;color:#fff;margin-bottom:12px}
 .small-note{font-size:11px!important;color:#9d9298!important}
 
+.article-section{margin-top:18px;padding:16px;border:1px solid #38272f;background:#171014;border-radius:14px}.article-section h3{font-size:16px;margin:0 0 7px}.article-section p{margin:0!important;font-size:13px!important}.article-page .article{margin-top:18px}
 .profile-seo-content h3{margin:6px 0 10px;font-size:20px;line-height:1.5}.profile-seo-content p{margin:8px 0;color:#d5c7cd;font-size:13px}.profile-seo-content .small-note{margin-top:12px;color:#a99ba1;font-size:11px}
 .profile-cta{margin-top:14px;background:linear-gradient(135deg,#21131a,#171014);border:1px solid #6a3048;border-radius:16px;padding:18px}
 .profile-cta h3{margin:4px 0 5px;font-size:17px}
@@ -191,6 +192,7 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
     </div>
     <h2 id="articleH2"></h2>
     <p id="articleBody"></p>
+    <div id="articleSections" class="article-sections"></div>
     <div id="featureActressList" class="feature-list hidden"></div>
     <div class="article">
       <div class="tag">CHECK</div>
@@ -321,24 +323,35 @@ const articleData = {
   feature: {
     tag: "FEATURE",
     title: "今週チェックしたい注目女優5選",
-    lead: "AV TREND JPでは、公開されているランキングや作品情報などを参考に、今チェックしたい5人をピックアップしています。",
-    h2: "5人のプロフィールから気になる作品をチェック",
-    body: "瀬戸環奈、逢沢みゆ、彩月七緒、河北彩花、石川澪の5人を掲載中です。まずはプロフィールページで基本情報を確認し、その後にDMM/FANZAの作品ページへ進める構成にしています。"
-
+    lead: "AV TREND JPでは、公開されている作品情報を整理し、現在掲載している5人をまとめてチェックできる特集ページを用意しています。",
+    h2: "まずはプロフィールから作品情報へ",
+    body: "瀬戸環奈、逢沢みゆ、彩月七緒、河北彩花、石川澪の5人を掲載中です。プロフィールでは作品コードや発売日などを確認でき、気になる作品はリンク先の最新情報へ進めます。",
+    sections: [
+      {h3:"気になる女優を見つける", p:"名前からプロフィールへ進み、掲載されている作品情報を一覧で確認できます。作品を探すときはタイトルだけでなく作品コードも一緒に見ると整理しやすくなります。"},
+      {h3:"作品情報はリンク先で確認", p:"価格、配信状況、販売条件などは変更される場合があります。購入や視聴を検討する場合は、リンク先に表示される最新情報と利用規約をご確認ください。"}
+    ]
   },
   release: {
     tag: "RELEASE",
     title: "最新作品をチェックするならこちら",
-    lead: "作品の発売状況や配信状況は更新されることがあります。最新情報はリンク先で確認するのがおすすめです。",
-    h2: "女優別に作品情報を確認",
-    body: "トップページの各カードからプロフィールへ進み、そこからDMM/FANZAの作品ページを確認できます。作品名や配信状況などの最新情報は、リンク先の表示を優先してください。"
+    lead: "作品を探すときに確認したい作品コード、発売日、タイトルなどの基本情報を整理しています。",
+    h2: "作品コードから目的の作品を探す",
+    body: "作品コードは同じ女優のタイトルを探したり、検索結果を照合したりするときに便利な識別情報です。AV TREND JPでは、プロフィールページの作品欄にコードと日付を掲載しています。",
+    sections: [
+      {h3:"チェックする3つの情報", p:"①作品タイトル、②作品コード、③発売日を確認すると、目的の作品を見つけやすくなります。配信状況や価格はリンク先で最新情報をご確認ください。"},
+      {h3:"女優ページからまとめて確認", p:"トップページから女優を選ぶと、その人物のプロフィールと掲載作品をまとめて確認できます。気になるタイトルから公式サービスの作品ページへ移動できます。"}
+    ]
   },
   ranking: {
     tag: "RANKING",
     title: "話題のAV女優ランキングを紹介",
-    lead: "ランキングは集計方法や更新日によって順位が変わります。AV TREND JPでは、ひとつの順位だけで人気を断定せず、公開情報を参考に紹介していきます。",
+    lead: "ランキングは集計方法や更新日によって順位が変わります。ここでは特定の順位を断定せず、掲載中の女優を比較しやすい形で整理しています。",
     h2: "ランキングを見るときのポイント",
-    body: "更新日、集計期間、SNSフォロワー数など、ランキングごとの基準を確認することが大切です。当サイトでも情報を整理しながら、気になる女優を見つけやすいページを増やしていきます。"
+    body: "ランキングを参考にするときは、更新日、集計期間、集計方法などを確認することが大切です。単一のランキングだけで人気を判断せず、プロフィールや作品情報もあわせて確認できます。",
+    sections: [
+      {h3:"順位よりも更新日を確認", p:"ランキングは時期によって変動します。ページの更新日や集計条件を確認し、現在の情報なのかを判断しましょう。"},
+      {h3:"気になる女優はプロフィールへ", p:"掲載中の5人はそれぞれプロフィールページを用意しています。作品コードや発売日などの情報も確認できるため、比較するときに便利です。"}
+    ]
   }
 };
 
@@ -399,6 +412,12 @@ if (article && articleData[article]) {
   document.getElementById("articleLead").textContent = a.lead;
   document.getElementById("articleH2").textContent = a.h2;
   document.getElementById("articleBody").textContent = a.body;
+  const articleSections = document.getElementById("articleSections");
+  if (articleSections) {
+    articleSections.innerHTML = (a.sections || []).map(function(sec){
+      return '<section class="article-section"><h3>' + sec.h3 + '</h3><p>' + sec.p + '</p></section>';
+    }).join('');
+  }
   const featureList = document.getElementById("featureActressList");
   if (article === "feature" && featureList) {
     const names = ["seto-kanna","aizawa-miyu","satsuki-nao","kawakita-saika","ishikawa-mio"];
