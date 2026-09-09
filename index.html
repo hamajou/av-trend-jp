@@ -81,7 +81,7 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
 .back-btn{display:inline-block;border:1px solid #6a3a4d;border-radius:10px;padding:10px 14px;color:#fff;margin-bottom:12px}
 .small-note{font-size:11px!important;color:#9d9298!important}
 
-.article-section{margin-top:18px;padding:16px;border:1px solid #38272f;background:#171014;border-radius:14px}.article-section h3{font-size:16px;margin:0 0 7px}.article-section p{margin:0!important;font-size:13px!important}.article-page .article{margin-top:18px}
+.article-section{margin-top:18px;padding:16px;border:1px solid #38272f;background:#171014;border-radius:14px}.article-section h3{font-size:16px;margin:0 0 7px}.article-section p{margin:0!important;font-size:13px!important}.article-page .article{margin-top:18px}.article-page #articleProfileLinks,.article-page #featureActressList{display:none!important}
 .profile-seo-content h3{margin:6px 0 10px;font-size:20px;line-height:1.5}.profile-seo-content p{margin:8px 0;color:#d5c7cd;font-size:13px}.profile-seo-content .small-note{margin-top:12px;color:#a99ba1;font-size:11px}.profile-facts{margin-top:14px;border:1px solid #38242c;border-radius:14px;overflow:hidden;background:#120d10}.profile-facts .fact-row{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid #2b1c22}.profile-facts .fact-row:last-child{border-bottom:0}.profile-facts dt,.profile-facts dd{margin:0;padding:11px 12px;font-size:12px;line-height:1.6}.profile-facts dt{color:#a99ba1;background:#191115}.profile-facts dd{color:#f1e9ed}.profile-bio{margin-top:14px;padding:16px;border:1px solid #38242c;background:#171014;border-radius:14px}.profile-bio .tag{margin-bottom:6px}.profile-bio h3{margin:4px 0 9px;font-size:18px}.profile-bio p{margin:0;color:#d5c7cd;font-size:13px;line-height:1.9}
 .profile-cta{margin-top:14px;background:linear-gradient(135deg,#21131a,#171014);border:1px solid #6a3048;border-radius:16px;padding:18px}
 .profile-cta h3{margin:4px 0 5px;font-size:17px}
@@ -110,6 +110,28 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
 .article-video-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;background:#e93680;color:#fff;text-decoration:none;font-weight:800;font-size:16px}
 .article-video-btn:active{transform:scale(.99)}
 .article-video-note{font-size:12px!important;color:#8f858b!important;margin-top:9px!important;margin-bottom:0!important}
+
+
+.article-toc{margin:18px 0 24px;padding:14px 15px;border:1px solid #38272f;border-radius:14px;background:#171014}
+.article-toc-title{font-size:12px;font-weight:900;color:#ff6fa6;letter-spacing:.08em;margin-bottom:10px}
+.article-toc-list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.article-toc a{display:block;padding:9px 10px;border:1px solid #3b252e;border-radius:9px;color:#eee;text-decoration:none;font-size:12px;line-height:1.45}
+.article-toc a span{color:#ff78aa;font-weight:900;margin-right:4px}
+.article-section{scroll-margin-top:80px}
+.article-inline-video{margin:20px -2px 0;border:1px solid rgba(255,75,145,.42);border-radius:16px;overflow:hidden;background:#171116;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.article-inline-video>img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#21171c}
+.article-inline-video-body{padding:15px 16px 17px}
+.article-inline-video-name{font-size:20px;font-weight:900;margin-bottom:4px}
+.article-inline-video-code{font-size:12px;color:#a99ca3;margin-bottom:12px;letter-spacing:.04em}
+.article-inline-video-label{font-size:11px;color:#ff78aa;font-weight:800;margin-bottom:7px}
+.article-video-btn{min-height:48px}
+.article-next{margin-top:24px}
+.next-links{display:grid;grid-template-columns:1fr;gap:8px;margin-top:12px}
+.next-links a{display:block;padding:12px 14px;border:1px solid #3b252e;border-radius:10px;color:#fff;text-decoration:none;font-weight:800;font-size:13px;background:#171014}
+@media(min-width:700px){
+  .article-toc-list{grid-template-columns:repeat(3,1fr)}
+  .article-inline-video>img{aspect-ratio:16/9}
+}
 
 </style>
 <script type="application/ld+json" id="faq-jsonld">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"AV TREND JPでは何を確認できますか？","acceptedAnswer":{"@type":"Answer","text":"AV女優のプロフィール、公開されている作品情報、作品コードや発売日などを整理しています。"}},{"@type":"Question","name":"作品の価格や配信状況は確認できますか？","acceptedAnswer":{"@type":"Answer","text":"価格や配信状況は変更される場合があるため、各作品のリンク先で最新情報をご確認ください。"}},{"@type":"Question","name":"掲載情報はどこから確認していますか？","acceptedAnswer":{"@type":"Answer","text":"当サイトでは公開情報をもとに情報を整理しています。最新情報や利用条件はリンク先の公式サービスをご確認ください。"}},{"@type":"Question","name":"18歳未満でも利用できますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。成人向けコンテンツに関する情報を扱うため、18歳未満の方は利用できません。"}}]}</script>
@@ -212,15 +234,21 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
     <div class="article-hero">
       <p id="articleLead"></p>
     </div>
+    <nav id="articleToc" class="article-toc" aria-label="この記事の目次"></nav>
     <h2 id="articleH2"></h2>
     <p id="articleBody"></p>
     <div id="articleSections" class="article-sections"></div>
     <div id="featureActressList" class="feature-list hidden"></div>
     <div id="articleProfileLinks" class="feature-list hidden"></div>
-    <div class="article">
-      <div class="tag">CHECK</div>
-      <h3>気になる女優の作品をチェック</h3>
-      <p>各プロフィールページから掲載作品の詳細を確認できます。</p>
+    <div class="article article-next">
+      <div class="tag">NEXT</div>
+      <h3>次に読む</h3>
+      <p>気になる情報をもう一段深くチェックできます。</p>
+      <div class="next-links">
+        <a href="?article=feature">注目5人まとめ</a>
+        <a href="?article=release">発売日・作品コード</a>
+        <a href="?article=profiles">プロフィールの見方</a>
+      </div>
     </div>
     <p class="small-note">掲載情報は公開情報をもとに編集しています。作品情報・価格・配信状況などはリンク先でご確認ください。</p>
   </div>
@@ -249,7 +277,7 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
   <h3 id="worksTitle">注目作品をチェック</h3>
   <p>作品の詳細・価格・配信状況などはリンク先で最新情報をご確認ください。</p>
   <div id="worksList" class="works-grid"></div>
-  <a id="worksAffiliate" class="btn affiliate-btn" data-track="fanza-click" href="#" target="_blank" rel="nofollow sponsored noopener">FANZAで作品を見る ↗</a>
+  <a id="worksAffiliate" class="btn affiliate-btn" data-track="fanza-click" href="#" target="_blank" rel="nofollow sponsored noopener">動画を見る ↗</a>
 </div>
 
 <div class="article">
@@ -662,19 +690,21 @@ if (article && articleData[article]) {
 
 function buildSingleArticleActressCard(name){
   const cards = {
-    "瀬戸環奈": {id:"seto-kanna", image:"https://pics.dmm.co.jp/digital/video/snos00334/snos00334pl.jpg", work:"SNOS-334", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00334&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
-    "逢沢みゆ": {id:"aizawa-miyu", image:"https://pics.dmm.co.jp/digital/video/1ienfa45901/1ienfa45901pl.jpg", work:"1IENFA45901", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3D1ienfa45901&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
-    "彩月七緒": {id:"satsuki-nao", image:"https://pics.dmm.co.jp/digital/video/nsodn00025/nsodn00025pl.jpg", work:"NSODN-025", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dnsodn00025&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
-    "河北彩花": {id:"kawakita-saika", image:"https://pics.dmm.co.jp/digital/video/snos00320/snos00320pl.jpg", work:"SNOS-320", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00320&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
-    "石川澪": {id:"ishikawa-mio", image:"https://pics.dmm.co.jp/digital/video/mida00798/mida00798pl.jpg", work:"MIDA-798", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00798&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"}
+    "瀬戸環奈": {id:"seto-kanna", work:"SNOS-334", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00334&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "逢沢みゆ": {id:"aizawa-miyu", work:"1IENFA45901", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3D1ienfa45901&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "彩月七緒": {id:"satsuki-nao", work:"NSODN-025", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dnsodn00025&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "河北彩花": {id:"kawakita-saika", work:"SNOS-320", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00320&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "石川澪": {id:"ishikawa-mio", work:"MIDA-798", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00798&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"}
   };
   const c=cards[name];
   if(!c) return "";
+  const embeddedPhoto = actresses[c.id] && actresses[c.id].image ? actresses[c.id].image : "";
   return '<div class="article-inline-video">' +
-    '<img src="'+c.image+'" alt="'+name+'の注目作品" loading="lazy">' +
+    '<img src="'+embeddedPhoto+'" alt="'+name+'のプロフィール写真" loading="lazy">' +
     '<div class="article-inline-video-body">' +
+    '<div class="article-inline-video-label">気になったらチェック</div>' +
     '<div class="article-inline-video-name">'+name+'</div>' +
-    '<div class="article-inline-video-code">'+c.work+'</div>' +
+    '<div class="article-inline-video-code">注目作品：'+c.work+'</div>' +
     '<a class="article-video-btn" href="'+c.url+'" target="_blank" rel="nofollow sponsored noopener" data-track="fanza-click" data-actress="'+c.id+'" data-work="'+c.work+'">▶ 動画を見る ↗</a>' +
     '</div></div>';
 }
@@ -695,7 +725,7 @@ if (article && articleData[article]) {
     articleSections.innerHTML = sections.map(function(sec, index){
       const matched = names.find(function(name){ return String(sec.h3 || "").indexOf(name) !== -1; });
       const card = matched ? buildSingleArticleActressCard(matched) : "";
-      return '<section class="article-section">' +
+      return '<section id="article-section-' + (index + 1) + '" class="article-section">' +
         '<div class="article-section-number">' + String(index + 1).padStart(2, "0") + '</div>' +
         '<h3>' + (sec.h3 || "") + '</h3>' +
         '<p>' + (sec.p || "") + '</p>' +
@@ -703,6 +733,15 @@ if (article && articleData[article]) {
       '</section>';
     }).join('');
     articleSections.style.display = sections.length ? "block" : "none";
+
+    const toc = document.getElementById("articleToc");
+    if (toc && sections.length) {
+      const tocItems = sections.map(function(sec, index){
+        const label = String(sec.h3 || "").replace(/｜.*/, "");
+        return '<a href="#article-section-' + (index + 1) + '"><span>' + String(index + 1).padStart(2, "0") + '</span>' + label + '</a>';
+      }).join('');
+      toc.innerHTML = '<div class="article-toc-title">CONTENTS</div><div class="article-toc-list">' + tocItems + '</div>';
+    }
   }
   const featureList = document.getElementById("featureActressList");
   if (article === "feature" && featureList) {
@@ -771,5 +810,40 @@ document.addEventListener("click", function(e) {
   });
 });
 </script>
+
+<script>
+(function(){
+  if(typeof window.gtag !== "function") return;
+  const sent = {};
+  function send(name, params){
+    if(sent[name]) return;
+    sent[name] = true;
+    window.gtag("event", name, params || {});
+  }
+  const isArticle = new URLSearchParams(location.search).has("article");
+  if(!isArticle) return;
+
+  [25,50,75,90].forEach(function(mark){
+    const id = "scroll_" + mark;
+    const check = function(){
+      const doc = document.documentElement;
+      const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+      const pct = Math.round((window.scrollY / max) * 100);
+      if(pct >= mark) send(id, {article: new URLSearchParams(location.search).get("article"), percent: mark});
+    };
+    window.addEventListener("scroll", check, {passive:true});
+  });
+
+  [30,60,180].forEach(function(sec){
+    setTimeout(function(){
+      send("article_engaged_" + sec + "s", {
+        article: new URLSearchParams(location.search).get("article"),
+        seconds: sec
+      });
+    }, sec * 1000);
+  });
+})();
+</script>
+
 </body>
 </html>
