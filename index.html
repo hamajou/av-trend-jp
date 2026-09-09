@@ -86,6 +86,7 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
 .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 .related-item{display:block;background:#21171c;border:1px solid #3b252e;border-radius:11px;padding:11px 9px;font-size:12px;font-weight:900}
 .related-item span{display:block;color:#ff78aa;font-size:10px;margin-bottom:2px}
+.feature-list{display:grid;gap:10px;margin:18px 0}.feature-item{display:flex;align-items:center;gap:12px;background:#171014;border:1px solid #3b252e;border-radius:14px;padding:12px}.feature-item .num{font-size:13px;font-weight:900;color:#ff78aa;width:24px;text-align:center}.feature-item .mini-photo{width:58px;height:58px;border-radius:10px;object-fit:cover;background:#21171c}.feature-item .feature-copy{flex:1}.feature-item h3{font-size:15px;margin:0 0 3px}.feature-item p{font-size:11px;margin:0;color:#a99ba1}.feature-item .feature-btn{white-space:nowrap;padding:8px 10px;border:1px solid #6a3a4d;border-radius:9px;font-size:11px;font-weight:900}.hidden{display:none!important}
 
 </style>
 </head>
@@ -176,6 +177,7 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
     </div>
     <h2 id="articleH2"></h2>
     <p id="articleBody"></p>
+    <div id="featureActressList" class="feature-list hidden"></div>
     <div class="article">
       <div class="tag">CHECK</div>
       <h3>気になる女優の作品をチェック</h3>
@@ -383,6 +385,15 @@ if (article && articleData[article]) {
   document.getElementById("articleLead").textContent = a.lead;
   document.getElementById("articleH2").textContent = a.h2;
   document.getElementById("articleBody").textContent = a.body;
+  const featureList = document.getElementById("featureActressList");
+  if (article === "feature" && featureList) {
+    const names = ["seto-kanna","aizawa-miyu","satsuki-nao","kawakita-saika","ishikawa-mio"];
+    featureList.innerHTML = names.map(function(key, i) {
+      const item = actresses[key];
+      return '<div class="feature-item"><div class="num">0' + (i + 1) + '</div><img class="mini-photo" src="' + item.image + '" alt="' + item.name + '" loading="lazy"><div class="feature-copy"><h3>' + item.name + '</h3><p>プロフィールと注目作品をチェック</p></div><a class="feature-btn" href="?actress=' + key + '">詳細を見る</a></div>';
+    }).join('');
+    featureList.classList.remove("hidden");
+  }
   document.title = a.title + " | AV TREND JP";
 } else if (actress) {
   document.getElementById("home").classList.add("hidden");
