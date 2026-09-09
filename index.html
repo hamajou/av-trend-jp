@@ -626,63 +626,6 @@ const articleData = {
     description = actresses[id].name + "のプロフィール、注目作品、作品情報を紹介。AV TREND JPで公開情報をわかりやすくチェックできます。";
   } else 
 
-function buildSingleArticleActressCard(name){
-  const cards = {
-    "瀬戸環奈": {id:"seto-kanna",image:"https://pics.dmm.co.jp/digital/video/snos00334/snos00334pl.jpg",work:"SNOS-334",url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00334&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
-    "逢沢みゆ": {id:"aizawa-miyu",image:"https://pics.dmm.co.jp/digital/video/1ienfa45901/1ienfa45901pl.jpg",work:"1IENFA45901",url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3D1ienfa45901&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
-    "彩月七緒": {id:"satsuki-nao",image:"https://pics.dmm.co.jp/digital/video/nsodn00025/nsodn00025pl.jpg",work:"NSODN-025",url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dnsodn00025&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
-    "河北彩花": {id:"kawakita-saika",image:"https://pics.dmm.co.jp/digital/video/snos00320/snos00320pl.jpg",work:"SNOS-320",url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00320&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
-    "石川澪": {id:"ishikawa-mio",image:"https://pics.dmm.co.jp/digital/video/mida00798/mida00798pl.jpg",work:"MIDA-798",url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00798&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"}
-  };
-  const c = cards[name];
-  if(!c) return "";
-  return '<div class="article-inline-video"><img src="'+c.image+'" alt="'+name+'の注目作品" loading="lazy"><div class="article-inline-video-body"><div class="article-inline-video-name">'+name+'</div><div class="article-inline-video-code">'+c.work+'</div><a class="article-video-btn" href="'+c.url+'" target="_blank" rel="nofollow sponsored noopener" data-track="fanza-click" data-actress="'+c.id+'" data-work="'+c.work+'">▶ 動画を見る ↗</a></div></div>';
-}
-
-function buildArticleActressVideoCards(article){
-  const cards = [
-    {
-      id:"seto-kanna", name:"瀬戸環奈",
-      image:"https://pics.dmm.co.jp/digital/video/snos00334/snos00334pl.jpg",
-      work:"SNOS-334",
-      url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00334&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
-    },
-    {
-      id:"aizawa-miyu", name:"逢沢みゆ",
-      image:"https://pics.dmm.co.jp/digital/video/1ienfa45901/1ienfa45901pl.jpg",
-      work:"1IENFA45901",
-      url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3D1ienfa45901&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
-    },
-    {
-      id:"satsuki-nao", name:"彩月七緒",
-      image:"https://pics.dmm.co.jp/digital/video/nsodn00025/nsodn00025pl.jpg",
-      work:"NSODN-025",
-      url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dnsodn00025&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
-    },
-    {
-      id:"kawakita-saika", name:"河北彩花",
-      image:"https://pics.dmm.co.jp/digital/video/snos00320/snos00320pl.jpg",
-      work:"SNOS-320",
-      url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00320&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
-    },
-    {
-      id:"ishikawa-mio", name:"石川澪",
-      image:"https://pics.dmm.co.jp/digital/video/mida00798/mida00798pl.jpg",
-      work:"MIDA-798",
-      url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00798&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
-    }
-  ];
-  return '<div class="article-video-pick"><div class="tag">VIDEO PICKUP</div><h3>気になる女優の動画を見る</h3><p>紹介文を読んで気になったら、写真付きのカードから作品を確認できます。作品コードも一緒に掲載しています。</p><div class="article-actress-grid">' +
-    cards.map(function(c){
-      return '<article class="article-actress-card">' +
-        '<img class="thumb" src="'+c.image+'" alt="'+c.name+'の作品画像" loading="lazy">' +
-        '<div class="card-body"><h3>'+c.name+'</h3><p>注目作品：'+c.work+'</p>' +
-        '<a class="article-video-btn" href="'+c.url+'" target="_blank" rel="nofollow sponsored noopener" data-track="fanza-click" data-actress="'+c.id+'" data-work="'+c.work+'">▶ 動画を見る ↗</a>' +
-        '<p class="article-video-note">作品の詳細・配信状況はリンク先で確認できます。</p></div></article>';
-    }).join('') +
-    '</div></div>';
-}
-
 if (article && articleData[article]) {
     title = articleData[article].title + " | AV TREND JP";
     description = articleData[article].lead;
@@ -715,6 +658,26 @@ if (article && articleData[article]) {
   script.textContent = JSON.stringify(ld);
   document.head.appendChild(script);
 })();
+
+
+function buildSingleArticleActressCard(name){
+  const cards = {
+    "瀬戸環奈": {id:"seto-kanna", image:"https://pics.dmm.co.jp/digital/video/snos00334/snos00334pl.jpg", work:"SNOS-334", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00334&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "逢沢みゆ": {id:"aizawa-miyu", image:"https://pics.dmm.co.jp/digital/video/1ienfa45901/1ienfa45901pl.jpg", work:"1IENFA45901", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3D1ienfa45901&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "彩月七緒": {id:"satsuki-nao", image:"https://pics.dmm.co.jp/digital/video/nsodn00025/nsodn00025pl.jpg", work:"NSODN-025", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dnsodn00025&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "河北彩花": {id:"kawakita-saika", image:"https://pics.dmm.co.jp/digital/video/snos00320/snos00320pl.jpg", work:"SNOS-320", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00320&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "石川澪": {id:"ishikawa-mio", image:"https://pics.dmm.co.jp/digital/video/mida00798/mida00798pl.jpg", work:"MIDA-798", url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00798&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"}
+  };
+  const c=cards[name];
+  if(!c) return "";
+  return '<div class="article-inline-video">' +
+    '<img src="'+c.image+'" alt="'+name+'の注目作品" loading="lazy">' +
+    '<div class="article-inline-video-body">' +
+    '<div class="article-inline-video-name">'+name+'</div>' +
+    '<div class="article-inline-video-code">'+c.work+'</div>' +
+    '<a class="article-video-btn" href="'+c.url+'" target="_blank" rel="nofollow sponsored noopener" data-track="fanza-click" data-actress="'+c.id+'" data-work="'+c.work+'">▶ 動画を見る ↗</a>' +
+    '</div></div>';
+}
 
 if (article && articleData[article]) {
   const a = articleData[article];
