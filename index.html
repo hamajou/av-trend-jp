@@ -3,140 +3,415 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AV TREND JPは、話題のAV女優や最新作品情報をチェックできる18歳以上向け情報サイトです。">
+  <meta name="description" content="AV TREND JPは、話題のAV女優や作品情報を紹介する18歳以上向け情報メディアです。">
   <title>AV TREND JP | 話題のAV女優・最新情報</title>
+
   <style>
-    *{box-sizing:border-box}
-    body{margin:0;background:#100b0e;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.7}
-    a{text-decoration:none;color:inherit}
-    header{position:sticky;top:0;z-index:10;background:#0b0809;border-bottom:1px solid #38232b;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
-    .logo{font-weight:900;letter-spacing:1px;font-size:18px}
-    .age{font-size:11px;background:#e94b8b;padding:4px 8px;border-radius:999px;font-weight:800}
-    .hero{padding:34px 18px 30px;background:linear-gradient(135deg,#32121f,#160c12)}
-    .hero small{color:#ff82b2;font-weight:800}
-    h1{font-size:27px;line-height:1.35;margin:10px 0}
-    .hero p{color:#d7cbd0;font-size:13px;margin:0}
-    main{max-width:760px;margin:auto}
-    section{padding:24px 16px}
-    .section-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:14px}
-    h2{font-size:20px;margin:0}
-    .sub{font-size:11px;color:#a99ba2}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .card{background:#1b1216;border:1px solid #36232b;border-radius:16px;padding:15px;min-height:180px;display:flex;flex-direction:column;justify-content:space-between}
-    .rank{font-size:11px;color:#ff82b2;font-weight:900}
-    .name{font-size:19px;font-weight:900;margin:5px 0}
-    .desc{font-size:12px;color:#bdb0b6}
-    .btn{display:block;text-align:center;background:#e43f82;border-radius:10px;padding:10px 8px;font-size:12px;font-weight:900;margin-top:12px}
-    .btn:active{transform:scale(.98)}
-    .article{background:#171014;border:1px solid #302028;border-radius:14px;padding:14px;margin-bottom:10px}
-    .article .tag{display:inline-block;font-size:10px;color:#ff82b2;margin-bottom:4px}
-    .article h3{font-size:14px;margin:0 0 4px}
-    .article p{font-size:11px;color:#aaa0a5;margin:0}
-    .notice{margin:4px 16px 24px;background:#1a1215;border:1px solid #3b252e;border-radius:14px;padding:14px;font-size:11px;color:#bdb1b6}
-    footer{text-align:center;border-top:1px solid #2b1d23;padding:22px 16px;color:#766b70;font-size:10px}
-    @media(min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: #0d090c;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      background: #090708;
+      border-bottom: 1px solid #302027;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .age {
+      background: #e83f83;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 38px 20px;
+      background: linear-gradient(135deg, #35121f, #160b11);
+    }
+
+    .hero-label {
+      color: #ff78aa;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .hero h1 {
+      margin: 10px 0;
+      font-size: 28px;
+      line-height: 1.4;
+    }
+
+    .hero p {
+      margin: 0;
+      color: #d5c7cd;
+      font-size: 13px;
+    }
+
+    section {
+      padding: 26px 16px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .section-head span {
+      color: #9f9299;
+      font-size: 11px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .card {
+      background: #191115;
+      border: 1px solid #38242c;
+      border-radius: 16px;
+      padding: 15px;
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .rank {
+      color: #ff78aa;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .name {
+      margin: 5px 0;
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .desc {
+      color: #bdb0b7;
+      font-size: 12px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 11px 8px;
+      border-radius: 11px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .profile-btn {
+      background: #2b1c23;
+      border: 1px solid #54313f;
+    }
+
+    .affiliate-btn {
+      background: #e83f83;
+    }
+
+    .article {
+      background: #171014;
+      border: 1px solid #302027;
+      border-radius: 14px;
+      padding: 15px;
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      color: #ff78aa;
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .article h3 {
+      margin: 3px 0;
+      font-size: 14px;
+    }
+
+    .article p {
+      margin: 0;
+      color: #aaa0a6;
+      font-size: 11px;
+    }
+
+    .profile-page {
+      padding: 24px 16px;
+    }
+
+    .profile-box {
+      background: #191115;
+      border: 1px solid #38242c;
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .back {
+      color: #ff78aa;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .profile-name {
+      margin: 8px 0;
+      font-size: 27px;
+      font-weight: 900;
+    }
+
+    .profile-text {
+      color: #bdb0b7;
+      font-size: 12px;
+    }
+
+    .notice {
+      margin: 4px 16px 24px;
+      padding: 14px;
+      background: #191115;
+      border: 1px solid #3a252e;
+      border-radius: 14px;
+      color: #bdb1b7;
+      font-size: 11px;
+    }
+
+    footer {
+      padding: 24px 16px;
+      border-top: 1px solid #281b21;
+      color: #71676c;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (min-width: 600px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   </style>
 </head>
+
 <body>
+
 <header>
-  <div class="logo">AV TREND JP</div>
+  <a class="logo" href="./">AV TREND JP</a>
   <div class="age">18+ ONLY</div>
 </header>
 
-<main>
-  <section class="hero">
-    <small>AV INFORMATION MEDIA</small>
+<main id="home">
+
+  <div class="hero">
+    <div class="hero-label">AV INFORMATION MEDIA</div>
     <h1>今、注目されている<br>AV女優をチェック</h1>
     <p>話題の女優・作品情報を見やすくまとめています。</p>
-  </section>
+  </div>
 
   <section>
-    <div class="section-title">
+    <div class="section-head">
       <h2>🔥 今週注目の5人</h2>
-      <span class="sub">AV TREND JP</span>
+      <span>AV TREND JP</span>
     </div>
 
     <div class="grid">
+
       <article class="card">
         <div>
           <div class="rank">01</div>
           <div class="name">瀬戸環奈</div>
-          <div class="desc">注目作品をチェック</div>
+          <div class="desc">作品・関連情報をチェック</div>
         </div>
-        <a class="btn" href="https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00313&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link" target="_blank" rel="nofollow sponsored noopener">DMM/FANZAで作品を見る</a>
+        <div>
+          <a class="btn profile-btn" href="?actress=seto-kanna">プロフィールを見る</a>
+          <a class="btn affiliate-btn" href="https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00313&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link" target="_blank" rel="nofollow sponsored noopener">DMM/FANZAで作品を見る</a>
+        </div>
       </article>
 
       <article class="card">
         <div>
           <div class="rank">02</div>
           <div class="name">逢沢みゆ</div>
-          <div class="desc">注目作品をチェック</div>
+          <div class="desc">作品・関連情報をチェック</div>
         </div>
-        <a class="btn" href="https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsqte00681&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link" target="_blank" rel="nofollow sponsored noopener">DMM/FANZAで作品を見る</a>
+        <div>
+          <a class="btn profile-btn" href="?actress=aizawa-miyu">プロフィールを見る</a>
+          <a class="btn affiliate-btn" href="https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsqte00681&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link" target="_blank" rel="nofollow sponsored noopener">DMM/FANZAで作品を見る</a>
+        </div>
       </article>
 
       <article class="card">
         <div>
           <div class="rank">03</div>
           <div class="name">彩月七緒</div>
-          <div class="desc">注目作品をチェック</div>
+          <div class="desc">作品・関連情報をチェック</div>
         </div>
-        <a class="btn" href="https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmngs00067&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link" target="_blank" rel="nofollow sponsored noopener">DMM/FANZAで作品を見る</a>
+        <div>
+          <a class="btn profile-btn" href="?actress=satsuki-nao">プロフィールを見る</a>
+          <a class="btn affiliate-btn" href="https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmngs00067&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link" target="_blank" rel="nofollow sponsored noopener">DMM/FANZAで作品を見る</a>
+        </div>
       </article>
 
       <article class="card">
         <div>
           <div class="rank">04</div>
           <div class="name">河北彩花</div>
-          <div class="desc">注目作品をチェック</div>
+          <div class="desc">作品・関連情報をチェック</div>
         </div>
-        <a class="btn" href="https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00275&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link" target="_blank" rel="nofollow sponsored noopener">DMM/FANZAで作品を見る</a>
+        <div>
+          <a class="btn profile-btn" href="?actress=kawakita-saika">プロフィールを見る</a>
+          <a class="btn affiliate-btn" href="https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00275&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link" target="_blank" rel="nofollow sponsored noopener">DMM/FANZAで作品を見る</a>
+        </div>
       </article>
 
       <article class="card">
         <div>
           <div class="rank">05</div>
           <div class="name">石川澪</div>
-          <div class="desc">注目作品をチェック</div>
+          <div class="desc">作品・関連情報をチェック</div>
         </div>
-        <a class="btn" href="https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00726&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link" target="_blank" rel="nofollow sponsored noopener">DMM/FANZAで作品を見る</a>
+        <div>
+          <a class="btn profile-btn" href="?actress=ishikawa-mio">プロフィールを見る</a>
+          <a class="btn affiliate-btn" href="https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00726&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link" target="_blank" rel="nofollow sponsored noopener">DMM/FANZAで作品を見る</a>
+        </div>
       </article>
+
     </div>
   </section>
 
   <section>
-    <div class="section-title">
+    <div class="section-head">
       <h2>📰 最新情報</h2>
-      <span class="sub">随時更新予定</span>
+      <span>随時更新予定</span>
     </div>
 
     <div class="article">
-      <span class="tag">FEATURE</span>
+      <div class="tag">FEATURE</div>
       <h3>今週チェックしたい注目女優5選</h3>
       <p>AV TREND JP編集部が注目する女優をピックアップ。</p>
     </div>
 
     <div class="article">
-      <span class="tag">RELEASE</span>
+      <div class="tag">RELEASE</div>
       <h3>最新作品をチェックするならこちら</h3>
       <p>各女優の作品ページからDMM/FANZAで確認できます。</p>
     </div>
 
     <div class="article">
-      <span class="tag">RANKING</span>
+      <div class="tag">RANKING</div>
       <h3>話題のAV女優ランキングを紹介</h3>
-      <p>複数の公開情報を参考に、注目度をわかりやすく紹介していきます。</p>
+      <p>公開されている情報を参考に、注目度をわかりやすく紹介していきます。</p>
     </div>
   </section>
 
-  <div class="notice">
-    <strong>🔞 18歳未満利用禁止</strong><br>
-    当サイトは成人向けコンテンツに関する情報を扱っています。18歳未満の方はご利用いただけません。掲載情報・リンク先の利用については各サービスの規約をご確認ください。
-  </div>
 </main>
 
-<footer>
-  © 2026 AV TREND JP
-</footer>
+<main id="profilePage" class="hidden">
+  <section class="profile-page">
+    <div class="profile-box">
+      <a class="back" href="./">← TOPへ戻る</a>
+      <div class="tag">ACTRESS PROFILE</div>
+      <div id="profileName" class="profile-name"></div>
+      <p class="profile-text">AV TREND JPの女優紹介ページです。作品情報や関連情報を順次掲載していきます。</p>
+      <a id="profileAffiliate" class="btn affiliate-btn" href="#" target="_blank" rel="nofollow sponsored noopener">DMM/FANZAで作品を見る</a>
+    </div>
+
+    <div class="article" style="margin-top:14px;">
+      <div class="tag">PROFILE</div>
+      <h3 id="profileTitle"></h3>
+      <p>プロフィールや公開されている作品情報を掲載予定です。</p>
+    </div>
+
+    <div class="article">
+      <div class="tag">RELEASE</div>
+      <h3>最新作品をチェック</h3>
+      <p>DMM/FANZAのページから最新の作品情報を確認できます。</p>
+    </div>
+  </section>
+</main>
+
+<div class="notice">
+  <strong>🔞 18歳未満利用禁止</strong><br>
+  当サイトは成人向けコンテンツに関する情報を扱っています。18歳未満の方はご利用いただけません。リンク先のサービスについては各サービスの利用規約をご確認ください。
+</div>
+
+<footer>© 2026 AV TREND JP</footer>
+
+<script>
+  const actresses = {
+    "seto-kanna": {
+      name: "瀬戸環奈",
+      url: "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00313&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
+    },
+    "aizawa-miyu": {
+      name: "逢沢みゆ",
+      url: "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsqte00681&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
+    },
+    "satsuki-nao": {
+      name: "彩月七緒",
+      url: "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmngs00067&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
+    },
+    "kawakita-saika": {
+      name: "河北彩花",
+      url: "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00275&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
+    },
+    "ishikawa-mio": {
+      name: "石川澪",
+      url: "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00726&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
+    }
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("actress");
+  const actress = actresses[id];
+
+  if (actress) {
+    document.getElementById("home").classList.add("hidden");
+    document.getElementById("profilePage").classList.remove("hidden");
+    document.getElementById("profileName").textContent = actress.name;
+    document.getElementById("profileTitle").textContent = actress.name + "のプロフィール・作品情報";
+    document.getElementById("profileAffiliate").href = actress.url;
+    document.title = actress.name + " | AV TREND JP";
+  }
+</script>
+
 </body>
 </html>
