@@ -93,7 +93,9 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
 
 
 
-.article-inline-video{margin:18px 0 4px;border:1px solid rgba(255,75,145,.28);border-radius:16px;overflow:hidden;background:#171116}
+.article-section{position:relative}
+.article-section-number{font-size:11px;letter-spacing:.12em;color:#f0448b;font-weight:800;margin-bottom:8px}
+.article-inline-video{margin:18px 0 2px;border:1px solid rgba(255,75,145,.38);border-radius:16px;overflow:hidden;background:#171116;box-shadow:0 8px 24px rgba(0,0,0,.18)}
 .article-inline-video>img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
 .article-inline-video-body{padding:14px 16px 16px}
 .article-inline-video-name{font-size:19px;font-weight:800;margin-bottom:3px}
@@ -218,7 +220,7 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
     <div class="article">
       <div class="tag">CHECK</div>
       <h3>気になる女優の作品をチェック</h3>
-      <p>各プロフィールページからDMM/FANZAの作品ページを確認できます。</p>
+      <p>各プロフィールページから掲載作品の詳細を確認できます。</p>
     </div>
     <p class="small-note">掲載情報は公開情報をもとに編集しています。作品情報・価格・配信状況などはリンク先でご確認ください。</p>
   </div>
@@ -725,12 +727,19 @@ if (article && articleData[article]) {
   document.getElementById("articleBody").textContent = a.body;
   const articleSections = document.getElementById("articleSections");
   if (articleSections) {
-    articleSections.innerHTML = (a.sections || []).map(function(sec){
-      const names = ["瀬戸環奈","逢沢みゆ","彩月七緒","河北彩花","石川澪"];
-      const matched = names.find(function(name){ return sec.h3.indexOf(name) !== -1; });
+    const names = ["瀬戸環奈","逢沢みゆ","彩月七緒","河北彩花","石川澪"];
+    const sections = Array.isArray(a.sections) ? a.sections : [];
+    articleSections.innerHTML = sections.map(function(sec, index){
+      const matched = names.find(function(name){ return String(sec.h3 || "").indexOf(name) !== -1; });
       const card = matched ? buildSingleArticleActressCard(matched) : "";
-      return '<section class="article-section"><h3>' + sec.h3 + '</h3><p>' + sec.p + '</p>' + card + '</section>';
+      return '<section class="article-section">' +
+        '<div class="article-section-number">' + String(index + 1).padStart(2, "0") + '</div>' +
+        '<h3>' + (sec.h3 || "") + '</h3>' +
+        '<p>' + (sec.p || "") + '</p>' +
+        card +
+      '</section>';
     }).join('');
+    articleSections.style.display = sections.length ? "block" : "none";
   }
   const featureList = document.getElementById("featureActressList");
   if (article === "feature" && featureList) {
