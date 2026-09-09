@@ -91,6 +91,17 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
 .related-item span{display:block;color:#ff78aa;font-size:10px;margin-bottom:2px}
 .feature-list{display:grid;gap:10px;margin:18px 0}.feature-item{display:flex;align-items:center;gap:12px;background:#171014;border:1px solid #3b252e;border-radius:14px;padding:12px}.feature-item .num{font-size:13px;font-weight:900;color:#ff78aa;width:24px;text-align:center}.feature-item .mini-photo{width:58px;height:58px;border-radius:10px;object-fit:cover;background:#21171c}.feature-item .feature-copy{flex:1}.feature-item h3{font-size:15px;margin:0 0 3px}.feature-item p{font-size:11px;margin:0;color:#a99ba1}.feature-item .feature-btn{white-space:nowrap;padding:8px 10px;border:1px solid #6a3a4d;border-radius:9px;font-size:11px;font-weight:900}.hidden{display:none!important}
 
+
+.article-video-pick{margin:28px 0}.article-video-pick>p{color:#c8bec4;line-height:1.9}.article-actress-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:22px}
+.article-actress-card{border:1px solid rgba(255,75,145,.28);border-radius:18px;overflow:hidden;background:#171116}
+.article-actress-card .thumb{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.article-actress-card .card-body{padding:18px}
+.article-actress-card h3{margin:0 0 8px;font-size:21px}
+.article-actress-card p{margin:0 0 14px;color:#c8bec4;line-height:1.8;font-size:14px}
+.article-video-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;background:#e93680;color:#fff;text-decoration:none;font-weight:800;font-size:16px}
+.article-video-btn:active{transform:scale(.99)}
+.article-video-note{font-size:12px!important;color:#8f858b!important;margin-top:9px!important;margin-bottom:0!important}
+
 </style>
 <script type="application/ld+json" id="faq-jsonld">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"AV TREND JPでは何を確認できますか？","acceptedAnswer":{"@type":"Answer","text":"AV女優のプロフィール、公開されている作品情報、作品コードや発売日などを整理しています。"}},{"@type":"Question","name":"作品の価格や配信状況は確認できますか？","acceptedAnswer":{"@type":"Answer","text":"価格や配信状況は変更される場合があるため、各作品のリンク先で最新情報をご確認ください。"}},{"@type":"Question","name":"掲載情報はどこから確認していますか？","acceptedAnswer":{"@type":"Answer","text":"当サイトでは公開情報をもとに情報を整理しています。最新情報や利用条件はリンク先の公式サービスをご確認ください。"}},{"@type":"Question","name":"18歳未満でも利用できますか？","acceptedAnswer":{"@type":"Answer","text":"いいえ。成人向けコンテンツに関する情報を扱うため、18歳未満の方は利用できません。"}}]}</script>
 </head>
@@ -604,7 +615,52 @@ const articleData = {
   if (actress && actresses[id]) {
     title = actresses[id].name + " | AV TREND JP";
     description = actresses[id].name + "のプロフィール、注目作品、作品情報を紹介。AV TREND JPで公開情報をわかりやすくチェックできます。";
-  } else if (article && articleData[article]) {
+  } else 
+function buildArticleActressVideoCards(article){
+  const cards = [
+    {
+      id:"seto-kanna", name:"瀬戸環奈",
+      image:"https://pics.dmm.co.jp/digital/video/snos00334/snos00334pl.jpg",
+      work:"SNOS-334",
+      url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00334&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
+    },
+    {
+      id:"aizawa-miyu", name:"逢沢みゆ",
+      image:"https://pics.dmm.co.jp/digital/video/1ienfa45901/1ienfa45901pl.jpg",
+      work:"1IENFA45901",
+      url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3D1ienfa45901&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
+    },
+    {
+      id:"satsuki-nao", name:"彩月七緒",
+      image:"https://pics.dmm.co.jp/digital/video/nsodn00025/nsodn00025pl.jpg",
+      work:"NSODN-025",
+      url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dnsodn00025&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
+    },
+    {
+      id:"kawakita-saika", name:"河北彩花",
+      image:"https://pics.dmm.co.jp/digital/video/snos00320/snos00320pl.jpg",
+      work:"SNOS-320",
+      url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00320&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
+    },
+    {
+      id:"ishikawa-mio", name:"石川澪",
+      image:"https://pics.dmm.co.jp/digital/video/mida00798/mida00798pl.jpg",
+      work:"MIDA-798",
+      url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00798&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"
+    }
+  ];
+  return '<div class="article-video-pick"><div class="tag">VIDEO PICKUP</div><h3>気になる女優の動画を見る</h3><p>紹介文を読んで気になったら、写真付きのカードから作品を確認できます。作品コードも一緒に掲載しています。</p><div class="article-actress-grid">' +
+    cards.map(function(c){
+      return '<article class="article-actress-card">' +
+        '<img class="thumb" src="'+c.image+'" alt="'+c.name+'の作品画像" loading="lazy">' +
+        '<div class="card-body"><h3>'+c.name+'</h3><p>注目作品：'+c.work+'</p>' +
+        '<a class="article-video-btn" href="'+c.url+'" target="_blank" rel="nofollow sponsored noopener" data-track="fanza-click" data-actress="'+c.id+'" data-work="'+c.work+'">▶ 動画を見る ↗</a>' +
+        '<p class="article-video-note">作品の詳細・配信状況はリンク先で確認できます。</p></div></article>';
+    }).join('') +
+    '</div></div>';
+}
+
+if (article && articleData[article]) {
     title = articleData[article].title + " | AV TREND JP";
     description = articleData[article].lead;
   }
@@ -651,6 +707,7 @@ if (article && articleData[article]) {
     articleSections.innerHTML = (a.sections || []).map(function(sec){
       return '<section class="article-section"><h3>' + sec.h3 + '</h3><p>' + sec.p + '</p></section>';
     }).join('');
+    articleSections.insertAdjacentHTML('afterend', buildArticleActressVideoCards(a));
   }
   const featureList = document.getElementById("featureActressList");
   if (article === "feature" && featureList) {
