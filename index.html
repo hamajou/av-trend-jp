@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AV TREND JPは、話題のAV女優や作品情報を紹介する18歳以上向け情報メディアです。">
+<meta name="description" content="AV TREND JPは、話題のAV女優や作品情報を紹介する18歳以上向け情報メディアです。プロフィール、注目作品、最新情報をわかりやすく整理しています。">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0d090c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AV TREND JP">
+<meta property="og:title" content="AV TREND JP | 話題のAV女優・最新情報">
+<meta property="og:description" content="話題のAV女優や作品情報を紹介する18歳以上向け情報メディア。">
+<meta property="og:url" content="https://av-trend-jp.vercel.app/">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://av-trend-jp.vercel.app/">
 <title>AV TREND JP | 話題のAV女優・最新情報</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5K7Q3T5K04"></script>
 <script>
@@ -269,6 +279,54 @@ const articleData = {
     body: "更新日、集計期間、SNSフォロワー数など、ランキングごとの基準を確認することが大切です。当サイトでも情報を整理しながら、気になる女優を見つけやすいページを増やしていきます。"
   }
 };
+
+// SEOメタ情報・構造化データをURLごとに更新
+(function setupSEO(){
+  const baseUrl = "https://av-trend-jp.vercel.app/";
+  const canonical = baseUrl + (actress ? "?actress=" + encodeURIComponent(id) : article ? "?article=" + encodeURIComponent(article) : "");
+  const desc = document.querySelector('meta[name="description"]');
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  const link = document.querySelector('link[rel="canonical"]');
+  let title = "AV TREND JP | 話題のAV女優・最新情報";
+  let description = "話題のAV女優や作品情報を紹介する18歳以上向け情報メディア。";
+
+  if (actress && actresses[id]) {
+    title = actresses[id].name + " | AV TREND JP";
+    description = actresses[id].name + "のプロフィール、注目作品、作品情報を紹介。AV TREND JPで公開情報をわかりやすくチェックできます。";
+  } else if (article && articleData[article]) {
+    title = articleData[article].title + " | AV TREND JP";
+    description = articleData[article].lead;
+  }
+
+  document.title = title;
+  if (desc) desc.setAttribute("content", description);
+  if (ogTitle) ogTitle.setAttribute("content", title);
+  if (ogDesc) ogDesc.setAttribute("content", description);
+  if (ogUrl) ogUrl.setAttribute("content", canonical);
+  if (link) link.setAttribute("href", canonical);
+
+  const oldLd = document.getElementById("seo-jsonld");
+  if (oldLd) oldLd.remove();
+  const ld = {
+    "@context":"https://schema.org",
+    "@type": actress && actresses[id] ? "ProfilePage" : "WebPage",
+    "name": title,
+    "url": canonical,
+    "description": description,
+    "isPartOf": {"@type":"WebSite","name":"AV TREND JP","url":baseUrl}
+  };
+  if (actress && actresses[id]) {
+    ld.about = {"@type":"Person","name":actresses[id].name};
+    ld.mainEntity = {"@type":"Person","name":actresses[id].name};
+  }
+  const script = document.createElement("script");
+  script.id = "seo-jsonld";
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(ld);
+  document.head.appendChild(script);
+})();
 
 if (article && articleData[article]) {
   const a = articleData[article];
