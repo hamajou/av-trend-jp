@@ -260,7 +260,7 @@ if (article && articleData[article]) {
   const worksList = document.getElementById("worksList");
   if (actress.works && actress.works.length) {
     worksList.innerHTML = actress.works.map((work, i) =>
-      '<div class="work-card"><div class="work-label">PICK UP 0' + (i + 1) + '</div><h4>' + work.title + '</h4><p>' + work.note + '</p><a class="btn affiliate-btn" href="' + work.url + '" target="_blank" rel="nofollow sponsored noopener">FANZAで見る ↗</a></div>'
+      '<div class="work-card"><div class="work-label">PICK UP 0' + (i + 1) + '</div><img src="' + work.image + '" alt="' + work.title + '" loading="lazy"><h4>' + work.title + '</h4><p>' + work.note + '</p><a class="btn affiliate-btn" href="' + work.url + '" target="_blank" rel="nofollow sponsored noopener">FANZAで見る ↗</a></div>'
     ).join('');
     document.getElementById("worksAffiliate").style.display = "none";
   }
