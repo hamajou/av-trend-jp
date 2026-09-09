@@ -92,6 +92,13 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
 .feature-list{display:grid;gap:10px;margin:18px 0}.feature-item{display:flex;align-items:center;gap:12px;background:#171014;border:1px solid #3b252e;border-radius:14px;padding:12px}.feature-item .num{font-size:13px;font-weight:900;color:#ff78aa;width:24px;text-align:center}.feature-item .mini-photo{width:58px;height:58px;border-radius:10px;object-fit:cover;background:#21171c}.feature-item .feature-copy{flex:1}.feature-item h3{font-size:15px;margin:0 0 3px}.feature-item p{font-size:11px;margin:0;color:#a99ba1}.feature-item .feature-btn{white-space:nowrap;padding:8px 10px;border:1px solid #6a3a4d;border-radius:9px;font-size:11px;font-weight:900}.hidden{display:none!important}
 
 
+
+.article-inline-video{margin:18px 0 4px;border:1px solid rgba(255,75,145,.28);border-radius:16px;overflow:hidden;background:#171116}
+.article-inline-video>img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.article-inline-video-body{padding:14px 16px 16px}
+.article-inline-video-name{font-size:19px;font-weight:800;margin-bottom:3px}
+.article-inline-video-code{font-size:12px;color:#a99ca3;margin-bottom:11px;letter-spacing:.04em}
+
 .article-video-pick{margin:28px 0}.article-video-pick>p{color:#c8bec4;line-height:1.9}.article-actress-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:22px}
 .article-actress-card{border:1px solid rgba(255,75,145,.28);border-radius:18px;overflow:hidden;background:#171116}
 .article-actress-card .thumb{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
@@ -616,6 +623,20 @@ const articleData = {
     title = actresses[id].name + " | AV TREND JP";
     description = actresses[id].name + "のプロフィール、注目作品、作品情報を紹介。AV TREND JPで公開情報をわかりやすくチェックできます。";
   } else 
+
+function buildSingleArticleActressCard(name){
+  const cards = {
+    "瀬戸環奈": {id:"seto-kanna",image:"https://pics.dmm.co.jp/digital/video/snos00334/snos00334pl.jpg",work:"SNOS-334",url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00334&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "逢沢みゆ": {id:"aizawa-miyu",image:"https://pics.dmm.co.jp/digital/video/1ienfa45901/1ienfa45901pl.jpg",work:"1IENFA45901",url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3D1ienfa45901&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "彩月七緒": {id:"satsuki-nao",image:"https://pics.dmm.co.jp/digital/video/nsodn00025/nsodn00025pl.jpg",work:"NSODN-025",url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dnsodn00025&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "河北彩花": {id:"kawakita-saika",image:"https://pics.dmm.co.jp/digital/video/snos00320/snos00320pl.jpg",work:"SNOS-320",url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dsnos00320&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"},
+    "石川澪": {id:"ishikawa-mio",image:"https://pics.dmm.co.jp/digital/video/mida00798/mida00798pl.jpg",work:"MIDA-798",url:"https://al.fanza.co.jp/?lurl=https%3A%2F%2Fvideo.dmm.co.jp%2Fav%2Fcontent%2F%3Fid%3Dmida00798&af_id=abcmedia-001&ch=toolbar_sp&ch_id=link"}
+  };
+  const c = cards[name];
+  if(!c) return "";
+  return '<div class="article-inline-video"><img src="'+c.image+'" alt="'+name+'の注目作品" loading="lazy"><div class="article-inline-video-body"><div class="article-inline-video-name">'+name+'</div><div class="article-inline-video-code">'+c.work+'</div><a class="article-video-btn" href="'+c.url+'" target="_blank" rel="nofollow sponsored noopener" data-track="fanza-click" data-actress="'+c.id+'" data-work="'+c.work+'">▶ 動画を見る ↗</a></div></div>';
+}
+
 function buildArticleActressVideoCards(article){
   const cards = [
     {
@@ -705,9 +726,11 @@ if (article && articleData[article]) {
   const articleSections = document.getElementById("articleSections");
   if (articleSections) {
     articleSections.innerHTML = (a.sections || []).map(function(sec){
-      return '<section class="article-section"><h3>' + sec.h3 + '</h3><p>' + sec.p + '</p></section>';
+      const names = ["瀬戸環奈","逢沢みゆ","彩月七緒","河北彩花","石川澪"];
+      const matched = names.find(function(name){ return sec.h3.indexOf(name) !== -1; });
+      const card = matched ? buildSingleArticleActressCard(matched) : "";
+      return '<section class="article-section"><h3>' + sec.h3 + '</h3><p>' + sec.p + '</p>' + card + '</section>';
     }).join('');
-    articleSections.insertAdjacentHTML('afterend', buildArticleActressVideoCards(a));
   }
   const featureList = document.getElementById("featureActressList");
   if (article === "feature" && featureList) {
