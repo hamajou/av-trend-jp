@@ -79,6 +79,7 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
 .back-btn{display:inline-block;border:1px solid #6a3a4d;border-radius:10px;padding:10px 14px;color:#fff;margin-bottom:12px}
 .small-note{font-size:11px!important;color:#9d9298!important}
 
+.profile-seo-content h3{margin:6px 0 10px;font-size:20px;line-height:1.5}.profile-seo-content p{margin:8px 0;color:#d5c7cd;font-size:13px}.profile-seo-content .small-note{margin-top:12px;color:#a99ba1;font-size:11px}
 .profile-cta{margin-top:14px;background:linear-gradient(135deg,#21131a,#171014);border:1px solid #6a3048;border-radius:16px;padding:18px}
 .profile-cta h3{margin:4px 0 5px;font-size:17px}
 .profile-cta p{margin:0;color:#bdb0b7;font-size:12px}
@@ -196,6 +197,8 @@ footer{padding:24px 16px;border-top:1px solid #281b21;color:#71676c;text-align:c
 </div>
 <div class="article" style="margin-top:14px"><div class="tag">PROFILE</div><h3 id="profileTitle"></h3><p id="profileIntro">公開情報をもとに、プロフィールと作品情報を見やすくまとめています。</p></div>
 
+<div id="profileSeoContent" class="article profile-seo-content"></div>
+
 <div class="profile-cta">
   <div class="tag">WORKS</div>
   <h3 id="worksTitle">注目作品をチェック</h3>
@@ -254,6 +257,49 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("actress");
 const article = params.get("article");
 const actress = actresses[id];
+
+const profileSeo = {
+  "seto-kanna": {
+    heading: "瀬戸環奈のプロフィール・作品情報",
+    paragraphs: [
+      "瀬戸環奈について、プロフィールと注目作品をまとめて確認できるページです。AV TREND JPでは、公開されている作品情報を中心に、気になるタイトルへ進みやすいよう整理しています。",
+      "作品を探すときは、作品タイトルだけでなく発売日や作品コードもあわせて確認すると、目的の作品を見つけやすくなります。配信状況や価格などはリンク先の最新情報をご確認ください。"
+    ],
+    keywords: "瀬戸環奈 プロフィール, 瀬戸環奈 作品情報, 瀬戸環奈 最新作品"
+  },
+  "aizawa-miyu": {
+    heading: "逢沢みゆのプロフィール・作品情報",
+    paragraphs: [
+      "逢沢みゆについて、プロフィールと注目作品をまとめて確認できるページです。AV TREND JPでは、公開されている作品情報を中心に、気になるタイトルへ進みやすいよう整理しています。",
+      "作品を比較するときは、作品タイトル、作品コード、発売日などを確認するのがおすすめです。配信状況や価格などの最新情報はリンク先でご確認ください。"
+    ],
+    keywords: "逢沢みゆ プロフィール, 逢沢みゆ 作品情報, 逢沢みゆ 最新作品"
+  },
+  "satsuki-nao": {
+    heading: "彩月七緒のプロフィール・作品情報",
+    paragraphs: [
+      "彩月七緒について、プロフィールと注目作品をまとめて確認できるページです。AV TREND JPでは、公開されている作品情報を整理し、気になるタイトルを探しやすい構成にしています。",
+      "作品情報は発売日や作品コードとあわせて確認すると、同じ女優のタイトルを探す際にも便利です。配信状況や価格などはリンク先の最新情報をご確認ください。"
+    ],
+    keywords: "彩月七緒 プロフィール, 彩月七緒 作品情報, 彩月七緒 最新作品"
+  },
+  "kawakita-saika": {
+    heading: "河北彩花のプロフィール・作品情報",
+    paragraphs: [
+      "河北彩花について、プロフィールと注目作品をまとめて確認できるページです。AV TREND JPでは、公開されている作品情報を中心に、気になるタイトルへ進みやすいよう整理しています。",
+      "作品をチェックするときは、タイトルと作品コード、発売日を確認しておくと便利です。配信状況や価格などはリンク先の最新情報をご確認ください。"
+    ],
+    keywords: "河北彩花 プロフィール, 河北彩花 作品情報, 河北彩花 最新作品"
+  },
+  "ishikawa-mio": {
+    heading: "石川澪のプロフィール・作品情報",
+    paragraphs: [
+      "石川澪について、プロフィールと注目作品をまとめて確認できるページです。AV TREND JPでは、公開されている作品情報を整理し、気になるタイトルを探しやすい構成にしています。",
+      "作品を探す際は、作品タイトル、作品コード、発売日などをあわせて確認するのがおすすめです。配信状況や価格などの最新情報はリンク先でご確認ください。"
+    ],
+    keywords: "石川澪 プロフィール, 石川澪 作品情報, 石川澪 最新作品"
+  }
+};
 
 const articleData = {
   feature: {
@@ -349,6 +395,14 @@ if (article && articleData[article]) {
   document.getElementById("worksAffiliate").dataset.actress = actress.name;
   document.getElementById("profilePhoto").innerHTML = '<img class="profile-photo" src="' + actress.image + '" alt="' + actress.name + 'のプロフィール写真">';
   document.getElementById("profileIntro").textContent = actress.name + "のプロフィールと作品情報をチェック。公開情報をもとに、気になる作品へスムーズに移動できるよう整理しています。";
+  const seoInfo = profileSeo[id];
+  if (seoInfo) {
+    document.getElementById("profileSeoContent").innerHTML =
+      '<div class="tag">ABOUT</div>' +
+      '<h3>' + seoInfo.heading + '</h3>' +
+      seoInfo.paragraphs.map(function(text){ return '<p>' + text + '</p>'; }).join('') +
+      '<p class="small-note">関連キーワード：' + seoInfo.keywords + '</p>';
+  }
   document.getElementById("worksTitle").textContent = actress.name + "の注目作品をチェック";
   const worksList = document.getElementById("worksList");
   if (actress.works && actress.works.length) {
